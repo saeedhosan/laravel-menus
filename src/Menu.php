@@ -17,7 +17,7 @@ use SaeedHosan\Menus\Concerns\Renderable;
  */
 class Menu implements Arrayable, Htmlable
 {
-    use Makeable,MenuAccessableCallback, Renderable;
+    use Makeable, MenuAccessableCallback, Renderable;
 
     /**
      * @var array<string, array<string, mixed>>
