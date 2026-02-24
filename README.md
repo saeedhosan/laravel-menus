@@ -23,6 +23,9 @@ use App\Menus\AdminMenu;
 
 Menu::create(AdminMenu::class);
 Menu::make()->render()->toArray();
+
+Menu::make()->toArray(); // or cached items
+Menu::make()->toHtml(); // or build html
 ```
 
 **Add Items To Another Menu**
@@ -66,7 +69,7 @@ Menu::create(BillingMenu::class, AdminMenu::class)->asSubmenu()->whereSlug('bill
 
 ```php
 return view('any', [
-    'items' => Menu::make()->render()->toArray(),
+    'items' => Menu::make()->toArray(),
 ]);
 ```
 
