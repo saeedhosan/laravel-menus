@@ -1,6 +1,6 @@
 {
     "name": "saeedhosan/laravel-menus",
-    "description": "The package is for menu builder",
+    "description": "The package is for laravel menu builder",
     "type": "library",
     "license": "MIT",
     "autoload": {
