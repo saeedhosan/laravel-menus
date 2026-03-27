@@ -3,6 +3,9 @@
 declare(strict_types=1);
 
 use Illuminate\Support\ServiceProvider;
+use SaeedHosan\Menus\Access\GateAccessCallback;
+use SaeedHosan\Menus\Menu;
+use SaeedHosan\Menus\MenuBuilder;
 use SaeedHosan\Menus\MenuServiceProvider;
 
 it('registers the menu service provider', function () {
@@ -13,7 +16,7 @@ it('registers the menu service provider', function () {
 it('loads config defaults', function () {
     expect(config('laravel-menus.view'))->toBe('laravel-menus::rootmenu');
     expect(config('laravel-menus.access_callback'))
-        ->toBe(SaeedHosan\Menus\Access\GateAccessCallback::class);
+        ->toBe(GateAccessCallback::class);
 });
 
 it('loads menu views', function () {
@@ -66,8 +69,8 @@ it('applies the configured access callback end-to-end', function () {
 
     (new MenuServiceProvider(app()))->boot();
 
-    \SaeedHosan\Menus\Menu::flush();
-    \SaeedHosan\Menus\Menu::create(new class extends \SaeedHosan\Menus\MenuBuilder
+    Menu::flush();
+    Menu::create(new class extends MenuBuilder
     {
         public function items(): array
         {
@@ -86,7 +89,7 @@ it('applies the configured access callback end-to-end', function () {
         }
     });
 
-    $items = \SaeedHosan\Menus\Menu::make()->items();
+    $items = Menu::make()->items();
 
     expect(collect($items)->pluck('slug')->values()->all())
         ->toBe(['allowed']);

@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+use SaeedHosan\Menus\Access\GateAccessCallback;
 
 return [
     /*
@@ -12,7 +13,7 @@ return [
     | Provide a callable or an invokable class name (avoid closures for config caching).
     |
     */
-    'access_callback' => \SaeedHosan\Menus\Access\GateAccessCallback::class,
+    'access_callback' => GateAccessCallback::class,
 
     /*
     |--------------------------------------------------------------------------
